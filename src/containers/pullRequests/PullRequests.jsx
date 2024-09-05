@@ -1,9 +1,9 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./PullRequests.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Fade } from "react-reveal";
 
-function PullRequestCard({ pullRequest }) {
+const PullRequestCard = ({ pullRequest }) => {
   let iconPR;
   let bgColor;
 
@@ -30,115 +30,110 @@ function PullRequestCard({ pullRequest }) {
   const subtitleString =
     "#" + pullRequest["number"] + " opened on " + pullRequest["createdAt"].split("T")[0];
 
-  let mergedBy;
-  if (pullRequest["mergedBy"] !== null) {
-    const name = pullRequest["mergedBy"]["login"];
-    mergedBy = (
-      <OverlayTrigger
-        key={name}
-        placement={"top"}
-        overlay={
-          <Tooltip id={`tooltip-top`}>
-            <strong>{`Merged by ${name}`}</strong>
-          </Tooltip>
-        }
+  const mergedBy = pullRequest["mergedBy"] ? (
+    <OverlayTrigger
+      key={pullRequest["mergedBy"]["login"]}
+      placement={"top"}
+      overlay={
+        <Tooltip id={`tooltip-top`}>
+          <strong>{`Merged by ${pullRequest["mergedBy"]["login"]}`}</strong>
+        </Tooltip>
+      }
+    >
+      <a
+        href={pullRequest["mergedBy"]["url"]}
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <a
-          href={pullRequest["mergedBy"]["url"]}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="merge-by-img"
-            src={pullRequest["mergedBy"]["avatarUrl"]}
-            alt=""
-          />
-        </a>
-      </OverlayTrigger>
-    );
-  } else {
-    mergedBy = <noscript />;
-  }
+        <img
+          className="merge-by-img"
+          src={pullRequest["mergedBy"]["avatarUrl"]}
+          alt="Merged by"
+        />
+      </a>
+    </OverlayTrigger>
+  ) : null;
 
   return (
-    <Fade bottom duration={2000} distance="40px">
-      <div
-        className="pull-request-card"
-        style={{
-          backgroundColor: bgColor,
-          border: `1px solid ${iconPR.style.color}`,
-        }}
-      >
-        <div className="pr-top">
-          <div className="pr-header">
-            <span
-              className="iconify pr-icons"
-              data-icon={iconPR.iconifyClass}
-              style={iconPR.style}
-              data-inline="false"
-            ></span>
-            <div className="pr-title-header">
-              <p className="pr-title">
-                <a
-                  href={pullRequest["url"]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {pullRequest["title"]}
-                </a>
-              </p>
-              <p className="pr-subtitle">{subtitleString}</p>
-            </div>
-          </div>
-          <div className="files-changed-header">
-            <p
-              className="files-changed-text"
-              style={{ backgroundColor: iconPR.style.color }}
-            >
-              {pullRequest["changedFiles"]}
-            </p>
-            <p className="files-changed-text-2">Files Changed</p>
-          </div>
-        </div>
-        <div className="pr-down">
-          <div className="changes-repo">
-            <p className="parent-repo">
-              Repository:{" "}
+    <motion.div
+      className="pull-request-card"
+      style={{
+        backgroundColor: bgColor,
+        border: `1px solid ${iconPR.style.color}`,
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="pr-top">
+        <div className="pr-header">
+          <span
+            className="iconify pr-icons"
+            data-icon={iconPR.iconifyClass}
+            style={iconPR.style}
+            data-inline="false"
+          ></span>
+          <div className="pr-title-header">
+            <p className="pr-title">
               <a
-                style={{ color: iconPR.style.color }}
-                href={pullRequest["baseRepository"]["url"]}
+                href={pullRequest["url"]}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {pullRequest["baseRepository"]["owner"]["login"]}/
-                {pullRequest["baseRepository"]["name"]}
+                {pullRequest["title"]}
               </a>
             </p>
-            <div className="changes-files">
-              <p className="additions-files">
-                <strong>{pullRequest["additions"]} + </strong>
-              </p>
-              <p className="deletions-files">
-                <strong>{pullRequest["deletions"]} - </strong>
-              </p>
-              {mergedBy}
-            </div>
-          </div>
-          <div className="owner-img-div">
-            <a
-              href={pullRequest["baseRepository"]["owner"]["url"]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="owner-img"
-                src={pullRequest["baseRepository"]["owner"]["avatarUrl"]}
-                alt=""
-              />
-            </a>
+            <p className="pr-subtitle">{subtitleString}</p>
           </div>
         </div>
+        <div className="files-changed-header">
+          <p
+            className="files-changed-text"
+            style={{ backgroundColor: iconPR.style.color }}
+          >
+            {pullRequest["changedFiles"]}
+          </p>
+          <p className="files-changed-text-2">Files Changed</p>
+        </div>
       </div>
-    </Fade>
+      <div className="pr-down">
+        <div className="changes-repo">
+          <p className="parent-repo">
+            Repository:{" "}
+            <a
+              style={{ color: iconPR.style.color }}
+              href={pullRequest["baseRepository"]["url"]}
+            >
+              {pullRequest["baseRepository"]["owner"]["login"]}/
+              {pullRequest["baseRepository"]["name"]}
+            </a>
+          </p>
+          <div className="changes-files">
+            <p className="additions-files">
+              <strong>{pullRequest["additions"]} + </strong>
+            </p>
+            <p className="deletions-files">
+              <strong>{pullRequest["deletions"]} - </strong>
+            </p>
+            {mergedBy}
+          </div>
+        </div>
+        <div className="owner-img-div">
+          <a
+            href={pullRequest["baseRepository"]["owner"]["url"]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className="owner-img"
+              src={pullRequest["baseRepository"]["owner"]["avatarUrl"]}
+              alt="Repository Owner"
+            />
+          </a>
+        </div>
+      </div>
+    </motion.div>
   );
-}
+};
 
 export default PullRequestCard;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { Fade } from "react-reveal";
+import { motion } from "framer-motion";
 import "./IssueChart.css";
 import IssueData from "../../shared/opensource/issues.json";
 
@@ -16,23 +16,43 @@ const IssueChart = () => {
     ],
   };
 
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    animation: {
+      duration: 4000,
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem) => {
+            const label = tooltipItem.label || '';
+            const value = tooltipItem.raw || 0;
+            return `${label}: ${value}`;
+          },
+        },
+      },
+    },
+    elements: {
+      arc: {
+        borderWidth: 2,
+      },
+    },
+  };
+
   return (
     <div className="issue-chart">
-      <Fade bottom duration={2000} distance="20px">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
         <h2 className="issue-chart-header">Issue Distribution</h2>
-      </Fade>
-      <Doughnut
-        data={data}
-        options={{
-          margin: "0",
-          padding: "0",
-          responsive: true,
-          maintainAspectRatio: true,
-          animation: {
-            duration: 4000,
-          },
-        }}
-      />
+      </motion.div>
+      <Doughnut data={data} options={chartOptions} />
     </div>
   );
 };

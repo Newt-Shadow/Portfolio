@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import TopButton from "../../components/topButton/TopButton";
@@ -9,29 +10,37 @@ import EducationImg from "./EducationImg";
 import { competitiveSites } from "../../portfolio";
 import { certifications } from "../../portfolio";
 import "./EducationComponent.css";
-import { Fade } from "react-reveal";
+
+const fadeInAnimation = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 function Education({ theme }) {
   return (
     <div className="education-main">
       <Header theme={theme} />
       <div className="basic-education">
-        <Fade bottom duration={2000} distance="40px">
-          <div className="heading-div">
-            <div className="heading-img-div">
-              <EducationImg theme={theme} />
-            </div>
-            <div className="heading-text-div">
-              <h1 className="heading-text" style={{ color: theme.text }}>
-                Education
-              </h1>
-              <h3 className="heading-sub-text" style={{ color: theme.text }}>
-                Basic Qualification and Certifications
-              </h3>
-              <CompetitiveSites logos={competitiveSites.competitiveSites} />
-            </div>
+        <motion.div
+          className="heading-div"
+          variants={fadeInAnimation}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <div className="heading-img-div">
+            <EducationImg theme={theme} />
           </div>
-        </Fade>
+          <div className="heading-text-div">
+            <h1 className="heading-text" style={{ color: theme.text }}>
+              Education
+            </h1>
+            <h3 className="heading-sub-text" style={{ color: theme.text }}>
+              Basic Qualification and Certifications
+            </h3>
+            <CompetitiveSites logos={competitiveSites.competitiveSites} />
+          </div>
+        </motion.div>
         <Educations theme={theme} />
         {certifications.certifications.length > 0 && (
           <Certifications theme={theme} />
