@@ -27,7 +27,7 @@ const Main = (props) => {
         <Route path="/home" element={<Home theme={props.theme} />} />
         <Route path="/experience" element={<Experience theme={props.theme} />} />
         <Route path="/education" element={<Education theme={props.theme} />} />
-        <Route path="/opensource" element={<Opensource theme={props.theme} />} />
+  
         <Route path="/contact" element={<Contact theme={props.theme} />} />
         {settings.isSplash && (
           <Route path="/splash" element={<Splash theme={props.theme} />} />

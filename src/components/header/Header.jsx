@@ -38,7 +38,7 @@ const Header = ({ theme }) => {
           <span className="navicon"></span>
         </label>
         <ul className="menu" style={{ backgroundColor: theme.body }}>
-          {["home", "education", "experience", "projects", "opensource", "contact"].map((path) => (
+          {["home", "education", "experience", "projects", "contact"].map((path) => (
             <li key={path}>
               <NavLink
                 to={`/${path}`}
