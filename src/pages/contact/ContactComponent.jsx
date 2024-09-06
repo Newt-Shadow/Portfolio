@@ -1,5 +1,4 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { Component } from "react";
 import Header from "../../components/header/Header.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import TopButton from "../../components/topButton/TopButton.jsx";
@@ -7,129 +6,107 @@ import SocialMedia from "../../components/socialMedia/SocialMedia.jsx";
 import Button from "../../components/button/Button.jsx";
 import BlogsImg from "./BlogsImg.jsx";
 import AddressImg from "./AddressImg.jsx";
+import { Fade } from "react-reveal";
 import "./ContactComponent.css";
 import { greeting, contactPageData } from "../../portfolio.jsx";
 
-const fadeInAnimation = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+const ContactData = contactPageData.contactSection;
+const blogSection = contactPageData.blogSection;
+const addressSection = contactPageData.addressSection;
+const phoneSection = contactPageData.phoneSection;
 
-function Contact({ theme, onToggle }) {
-  return (
-    <div className="contact-main">
-      <Header theme={theme} />
-      <div className="basic-contact">
-        <motion.div
-          className="contact-heading-div"
-          variants={fadeInAnimation}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 1 }}
-        >
-          <div className="contact-heading-img-div">
-            <img
-              src={require(`../../assets/images/${contactPageData.contactSection["profile_image_path"]}`)}
-              alt=""
-            />
-          </div>
-          <div className="contact-heading-text-div">
-            <h1 className="contact-heading-text" style={{ color: theme.text }}>
-              {contactPageData.contactSection["title"]}
-            </h1>
-            <p
-              className="contact-header-detail-text subTitle"
-              style={{ color: theme.secondaryText }}
-            >
-              {contactPageData.contactSection["description"]}
-            </p>
-            <SocialMedia theme={theme} />
-            <div className="resume-btn-div">
-              <Button
-                text="See My Resume"
-                newTab={true}
-                href={greeting.resumeLink}
-                theme={theme}
-              />
+class Contact extends Component {
+  render() {
+    const theme = this.props.theme;
+    return (
+      <div className="contact-main">
+        <Header theme={theme} />
+        <div className="basic-contact">
+          <Fade bottom duration={1000} distance="40px">
+            <div className="contact-heading-div">
+              <div className="contact-heading-img-div">
+                <img
+                  src={require(`../../assets/images/${ContactData["profile_image_path"]}`)}
+                  alt=""
+                />
+              </div>
+              <div className="contact-heading-text-div">
+                <h1
+                  className="contact-heading-text"
+                  style={{ color: theme.text }}
+                >
+                  {ContactData["title"]}
+                </h1>
+                <p
+                  className="contact-header-detail-text subTitle"
+                  style={{ color: theme.secondaryText }}
+                >
+                  {ContactData["description"]}
+                </p>
+                <SocialMedia theme={theme} />
+                <div className="resume-btn-div">
+                  <Button
+                    text="See My Resume"
+                    newTab={true}
+                    href={greeting.resumeLink}
+                    theme={theme}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="blog-heading-div"
-          variants={fadeInAnimation}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <div className="blog-heading-text-div">
-            <h1 className="blog-heading-text" style={{ color: theme.text }}>
-              {contactPageData.blogSection["title"]}
-            </h1>
-            <p
-              className="blog-header-detail-text subTitle"
-              style={{ color: theme.secondaryText }}
-            >
-              {contactPageData.blogSection["subtitle"]}
-            </p>
-            <div className="blogsite-btn-div">
-              <Button
-                text="Visit My Blogsite"
-                newTab={true}
-                href={contactPageData.blogSection.link}
-                theme={theme}
-              />
+          </Fade>
+     
+          <Fade bottom duration={1000} distance="40px">
+            <div className="address-heading-div">
+              <div className="contact-heading-img-div">
+                {/* <img
+											src={require(`../../assets/images/${addressSection["avatar_image_path"]}`)}
+											alt=""
+										/> */}
+                <AddressImg theme={theme} />
+              </div>
+              <div className="address-heading-text-div">
+                <h1
+                  className="address-heading-text"
+                  style={{ color: theme.text }}
+                >
+                  {addressSection["title"]}
+                </h1>
+                <p
+                  className="contact-header-detail-text subTitle"
+                  style={{ color: theme.secondaryText }}
+                >
+                  {addressSection["subtitle"]}
+                </p>
+                <h1
+                  className="address-heading-text"
+                  style={{ color: theme.text }}
+                >
+                  {phoneSection["title"]}
+                </h1>
+                <p
+                  className="contact-header-detail-text subTitle"
+                  style={{ color: theme.secondaryText }}
+                >
+                  {phoneSection["subtitle"]}
+                </p>
+                <div className="address-btn-div">
+                  <Button
+                    text="Visit on Google Maps"
+                    newTab={true}
+                    href={addressSection.location_map_link}
+                    theme={theme}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="blog-heading-img-div">
-            <BlogsImg theme={theme} />
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="address-heading-div"
-          variants={fadeInAnimation}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 1, delay: 1 }}
-        >
-          <div className="contact-heading-img-div">
-            <AddressImg theme={theme} />
-          </div>
-          <div className="address-heading-text-div">
-            <h1 className="address-heading-text" style={{ color: theme.text }}>
-              {contactPageData.addressSection["title"]}
-            </h1>
-            <p
-              className="contact-header-detail-text subTitle"
-              style={{ color: theme.secondaryText }}
-            >
-              {contactPageData.addressSection["subtitle"]}
-            </p>
-            <h1 className="address-heading-text" style={{ color: theme.text }}>
-              {contactPageData.phoneSection["title"]}
-            </h1>
-            <p
-              className="contact-header-detail-text subTitle"
-              style={{ color: theme.secondaryText }}
-            >
-              {contactPageData.phoneSection["subtitle"]}
-            </p>
-            <div className="address-btn-div">
-              <Button
-                text="Visit on Google Maps"
-                newTab={true}
-                href={contactPageData.addressSection.location_map_link}
-                theme={theme}
-              />
-            </div>
-          </div>
-        </motion.div>
+          </Fade>
+        </div>
+        <Footer theme={this.props.theme} onToggle={this.props.onToggle} />
+        <TopButton theme={this.props.theme} />
       </div>
-      <Footer theme={theme} onToggle={onToggle} />
-      <TopButton theme={theme} />
-    </div>
-  );
+    );
+  }
 }
 
 export default Contact;

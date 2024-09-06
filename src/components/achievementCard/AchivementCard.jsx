@@ -1,6 +1,6 @@
 import React from "react";
 
-function AchivementCard({ cardInfo }) {
+export default function AchivementCard({ cardInfo }) {
   function openUrlInNewTab(url) {
     var win = window.open(url, "_blank");
     win.focus();
@@ -23,5 +23,3 @@ function AchivementCard({ cardInfo }) {
     </div>
   );
 }
-
-export default AchivementCard;

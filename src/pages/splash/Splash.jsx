@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import "./Splash.css";
-import { useNavigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import LoaderLogo from "../../components/Loader/LoaderLogo.jsx";
 
 function AnimatedSplash(props) {
@@ -13,23 +13,29 @@ function AnimatedSplash(props) {
   );
 }
 
-function Splash(props) {
-  const [redirect, setRedirect] = useState(false);
-  const navigate = useNavigate();
+class Splash extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+    };
+  }
 
-  useEffect(() => {
-    const timerId = setTimeout(() => setRedirect(true), 5500);
+  componentDidMount() {
+    this.id = setTimeout(() => this.setState({ redirect: true }), 5500);
+  }
 
-    return () => clearTimeout(timerId);
-  }, []);
+  componentWillMount() {
+    clearTimeout(this.id);
+  }
 
-  useEffect(() => {
-    if (redirect) {
-      navigate("/home");
-    }
-  }, [redirect, navigate]);
-
-  return <AnimatedSplash theme={props.theme} />;
+  render() {
+    return this.state.redirect ? (
+      <Redirect to="/home" />
+    ) : (
+      <AnimatedSplash theme={this.props.theme} />
+    );
+  }
 }
 
 export default Splash;

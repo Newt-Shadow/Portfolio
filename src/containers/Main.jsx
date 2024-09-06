@@ -1,40 +1,68 @@
 import React from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
-import Home from "../pages/home/HomeComponent";
-import Splash from "../pages/splash/Splash";
-import Education from "../pages/education/EducationComponent";
-import Experience from "../pages/experience/Experience";
-import Opensource from "../pages/opensource/Opensource";
-import Contact from "../pages/contact/ContactComponent";
-import Projects from "../pages/projects/Projects";
-import { settings } from "../portfolio";
-import Error404 from "../pages/errors/error404/Error";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Home from "../pages/home/HomeComponent.jsx";
+import Splash from "../pages/splash/Splash.jsx";
+import Education from "../pages/education/EducationComponent.jsx";
+import Experience from "../pages/experience/Experience.jsx";
+import Opensource from "../pages/opensource/Opensource.jsx";
+import Contact from "../pages/contact/ContactComponent.jsx";
+import Projects from "../pages/projects/Projects.jsx";
+import { settings } from "../portfolio.jsx";
+import Error404 from "../pages/errors/error404/Error.jsx";
 
-const Main = (props) => {
+const Main = ({ theme }) => {
   return (
     <BrowserRouter basename="/">
-      <Routes>
+      <Switch>
         <Route
           path="/"
-          element={
+          exact
+          render={(props) =>
             settings.isSplash ? (
-              <Splash theme={props.theme} />
+              <Splash {...props} theme={theme} />
             ) : (
-              <Home theme={props.theme} />
+              <Home {...props} theme={theme} />
             )
           }
         />
-        <Route path="/home" element={<Home theme={props.theme} />} />
-        <Route path="/experience" element={<Experience theme={props.theme} />} />
-        <Route path="/education" element={<Education theme={props.theme} />} />
-  
-        <Route path="/contact" element={<Contact theme={props.theme} />} />
+        <Route
+          path="/home"
+          render={(props) => <Home {...props} theme={theme} />}
+        />
+        <Route
+          path="/experience"
+          exact
+          render={(props) => <Experience {...props} theme={theme} />}
+        />
+        <Route
+          path="/education"
+          render={(props) => <Education {...props} theme={theme} />}
+        />
+        <Route
+          path="/opensource"
+          render={(props) => <Opensource {...props} theme={theme} />}
+        />
+        <Route
+          path="/contact"
+          render={(props) => <Contact {...props} theme={theme} />}
+        />
+
         {settings.isSplash && (
-          <Route path="/splash" element={<Splash theme={props.theme} />} />
+          <Route
+            path="/splash"
+            render={(props) => <Splash {...props} theme={theme} />}
+          />
         )}
-        <Route path="/projects" element={<Projects theme={props.theme} />} />
-        <Route path="*" element={<Error404 theme={props.theme} />} />
-      </Routes>
+
+        <Route
+          path="/projects"
+          render={(props) => <Projects {...props} theme={theme} />}
+        />
+        <Route
+          path="*"
+          render={(props) => <Error404 {...props} theme={theme} />}
+        />
+      </Switch>
     </BrowserRouter>
   );
 };
