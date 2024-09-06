@@ -1,26 +1,20 @@
 import React from "react";
-import { motion } from "framer-motion";
 import "./Skills.css";
 import SkillSection from "./SkillSection";
+import { Fade } from "react-reveal";
 
-const Skills = (props) => {
+export default function Skills(props) {
   const theme = props.theme;
-
   return (
     <div className="main" id="skills">
-      <motion.div
-        className="skills-header-div"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className="skills-header" style={{ color: theme.text }}>
-          What I Do?
-        </h1>
-      </motion.div>
+      <div className="skills-header-div">
+        <Fade bottom duration={2000} distance="20px">
+          <h1 className="skills-header" style={{ color: theme.text }}>
+            What I Do?
+          </h1>
+        </Fade>
+      </div>
       <SkillSection theme={theme} />
     </div>
   );
-};
-
-export default Skills;
+}
