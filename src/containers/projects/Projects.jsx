@@ -8,13 +8,13 @@ import { openSource } from "../../portfolio.jsx";
 import { greeting } from "../../portfolio.jsx";
 
 export default function Projects() {
-  const [repo, setrepo] = useState([]);
+  const [repo, setRepo] = useState([]);
 
   useEffect(() => {
-    getRepoData();
+    fetchRepoData();
   }, []);
 
-  function getRepoData() {
+  function fetchRepoData() {
     const client = new ApolloClient({
       uri: "https://api.github.com/graphql",
       request: (operation) => {
@@ -57,25 +57,25 @@ export default function Projects() {
         `,
       })
       .then((result) => {
-        setrepoFunction(result.data.repositoryOwner.pinnedRepositories.edges);
+        updateRepo(result.data.repositoryOwner.pinnedRepositories.edges);
         console.log(result);
       });
   }
 
-  function setrepoFunction(array) {
-    setrepo(array);
+  function updateRepo(array) {
+    setRepo(array);
   }
 
   return (
     <div className="main" id="opensource">
       <h1 className="project-title">Open Source Projects</h1>
       <div className="repo-cards-div-main">
-        {repo.map((v, i) => {
-          return <GithubRepoCard repo={v} key={v.node.id} />;
-        })}
+        {repo.map((v) => (
+          <GithubRepoCard repo={v} key={v.node.id} />
+        ))}
       </div>
       <Button
-        text={"More Projects"}
+        text="More Projects"
         className="project-button"
         href={greeting.githubProfile}
         newTab={true}

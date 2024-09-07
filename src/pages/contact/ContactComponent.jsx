@@ -1,5 +1,8 @@
 import React from "react";
+<<<<<<< Updated upstream
 import { motion } from "framer-motion";
+=======
+>>>>>>> Stashed changes
 import Header from "../../components/header/Header.jsx";
 import Footer from "../../components/footer/Footer.jsx";
 import TopButton from "../../components/topButton/TopButton.jsx";
@@ -10,16 +13,23 @@ import AddressImg from "./AddressImg.jsx";
 import "./ContactComponent.css";
 import { greeting, contactPageData } from "../../portfolio.jsx";
 
+<<<<<<< Updated upstream
 const fadeInAnimation = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
 function Contact({ theme, onToggle }) {
+=======
+const Contact = ({ theme }) => {
+  const { contactSection, blogSection, addressSection, phoneSection } = contactPageData;
+
+>>>>>>> Stashed changes
   return (
     <div className="contact-main">
       <Header theme={theme} />
       <div className="basic-contact">
+<<<<<<< Updated upstream
         <motion.div
           className="contact-heading-div"
           variants={fadeInAnimation}
@@ -131,5 +141,88 @@ function Contact({ theme, onToggle }) {
     </div>
   );
 }
+=======
+        <Fade bottom duration={1000} distance="40px">
+          <div className="contact-heading-div">
+            <div className="contact-heading-img-div">
+              <img
+                src={require(`../../assets/images/${contactSection.profile_image_path}`)}
+                alt=""
+              />
+            </div>
+            <div className="contact-heading-text-div">
+              <h1
+                className="contact-heading-text"
+                style={{ color: theme.text }}
+              >
+                {contactSection.title}
+              </h1>
+              <p
+                className="contact-header-detail-text subTitle"
+                style={{ color: theme.secondaryText }}
+              >
+                {contactSection.description}
+              </p>
+              <SocialMedia theme={theme} />
+              <div className="resume-btn-div">
+                <Button
+                  text="See My Resume"
+                  newTab={true}
+                  href={greeting.resumeLink}
+                  theme={theme}
+                />
+              </div>
+            </div>
+          </div>
+        </Fade>
+
+        <Fade bottom duration={1000} distance="40px">
+          <div className="address-heading-div">
+            <div className="contact-heading-img-div">
+              <AddressImg theme={theme} />
+            </div>
+            <div className="address-heading-text-div">
+              <h1
+                className="address-heading-text"
+                style={{ color: theme.text }}
+              >
+                {addressSection.title}
+              </h1>
+              <p
+                className="contact-header-detail-text subTitle"
+                style={{ color: theme.secondaryText }}
+              >
+                {addressSection.subtitle}
+              </p>
+              <h1
+                className="address-heading-text"
+                style={{ color: theme.text }}
+              >
+                {phoneSection.title}
+              </h1>
+              <p
+                className="contact-header-detail-text subTitle"
+                style={{ color: theme.secondaryText }}
+              >
+                {phoneSection.subtitle}
+              </p>
+              <div className="address-btn-div">
+                <Button
+                  text="Visit on Google Maps"
+                  newTab={true}
+                  href={addressSection.location_map_link}
+                  theme={theme}
+                />
+              </div>
+            </div>
+          </div>
+        </Fade>
+      </div>
+      <Footer theme={theme} />
+      <TopButton theme={theme} />
+    </div>
+  );
+};
+>>>>>>> Stashed changes
 
 export default Contact;

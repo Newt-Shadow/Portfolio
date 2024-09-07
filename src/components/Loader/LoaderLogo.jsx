@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoaderLogo.css";
 
+<<<<<<< Updated upstream
 function LogoLoader({ theme }) { 
 return (
 
@@ -333,4 +334,17 @@ return (
 
 
 }
+=======
+function LogoLoader (){
+  
+    return (
+      <div>
+
+      </div>
+
+    );
+  }
+
+
+>>>>>>> Stashed changes
 export default LogoLoader;

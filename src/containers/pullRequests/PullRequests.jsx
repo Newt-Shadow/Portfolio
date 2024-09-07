@@ -1,8 +1,12 @@
 import React from "react";
+<<<<<<< Updated upstream
 import { motion } from "framer-motion";
+=======
+>>>>>>> Stashed changes
 import "./PullRequests.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
+<<<<<<< Updated upstream
 const PullRequestCard = ({ pullRequest }) => {
   let iconPR;
   let bgColor;
@@ -137,3 +141,25 @@ const PullRequestCard = ({ pullRequest }) => {
 };
 
 export default PullRequestCard;
+=======
+export default function PullRequests(props) {
+  const { theme } = props;
+
+  return (
+    <div>
+      <div className="pull-requests-header-div">
+        <Fade bottom duration={2000} distance="20px">
+          <h1 className="pull-requests-header" style={{ color: theme.text }}>
+            Pull Requests
+          </h1>
+        </Fade>
+      </div>
+      <div className="pull-request-body-div">
+        {pullRequestsData["data"].map((pullRequest) => (
+          <PullRequestCard pullRequest={pullRequest} key={pullRequest.id} />
+        ))}
+      </div>
+    </div>
+  );
+}
+>>>>>>> Stashed changes

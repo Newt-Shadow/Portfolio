@@ -22,6 +22,7 @@ const PullRequestChart = () => {
 
   return (
     <div className="pr-chart">
+<<<<<<< Updated upstream
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,6 +30,11 @@ const PullRequestChart = () => {
       >
         <h2 className="pr-chart-header">Pull Request Distribution</h2>
       </motion.div>
+=======
+      <Fade bottom duration={2000} distance="20px">
+        <h2 className="pr-chart-header">Pull Request Distribution</h2>
+      </Fade>
+>>>>>>> Stashed changes
       <Doughnut
         data={data}
         options={{

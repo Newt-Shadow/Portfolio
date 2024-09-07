@@ -1,5 +1,5 @@
 const settings = {
-  isSplash: true,
+  isSplash: false,
 };
 
 

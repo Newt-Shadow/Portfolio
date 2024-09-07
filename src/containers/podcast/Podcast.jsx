@@ -12,19 +12,17 @@ export default function Podcast() {
         </p>
       </div>
       <div className="podcast-main-div">
-        {podcastSection.podcast.map((podcastLink) => {
-          return (
-            <div>
-              <iframe
-                title="podcast"
-                className="podcast"
-                src={podcastLink}
-                frameborder="0"
-                scrolling="no"
-              ></iframe>
-            </div>
-          );
-        })}
+        {podcastSection.podcast.map((podcastLink, index) => (
+          <div key={index}>
+            <iframe
+              title={`podcast-${index}`}
+              className="podcast"
+              src={podcastLink}
+              frameBorder="0"
+              scrolling="no"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

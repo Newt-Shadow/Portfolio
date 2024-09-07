@@ -2,7 +2,11 @@ import React from "react";
 import "./CompetitiveSites.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
+<<<<<<< Updated upstream
 function CompetitiveSites ({ logos }) {
+=======
+function CompetitiveSites({ logos }) {
+>>>>>>> Stashed changes
   return (
     <div className="competitive-sites-main-div">
       <ul className="dev-icons">
@@ -36,6 +40,10 @@ function CompetitiveSites ({ logos }) {
       </ul>
     </div>
   );
+<<<<<<< Updated upstream
 };
+=======
+}
+>>>>>>> Stashed changes
 
 export default CompetitiveSites;

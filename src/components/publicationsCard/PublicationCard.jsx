@@ -3,10 +3,18 @@ import PropTypes from "prop-types";
 import "./PublicationCard.css";
 import { motion } from "framer-motion";
 
+<<<<<<< Updated upstream
 const PublicationCard = ({ pub, theme }) => {
   const openPubinNewTab = (url) => {
     window.open(url, "_blank", "noopener,noreferrer").focus();
   };
+=======
+export default function PublicationCard({ pub, theme }) {
+  function openPubinNewTab(url) {
+    const win = window.open(url, "_blank");
+    if (win) win.focus();
+  }
+>>>>>>> Stashed changes
 
   return (
     <motion.div
@@ -25,6 +33,17 @@ const PublicationCard = ({ pub, theme }) => {
           <p className="publication-name" style={{ color: theme.text }}>
             {pub.name}
           </p>
+<<<<<<< Updated upstream
+=======
+          <div className="publication-details">
+            <p
+              className="publication-creation-date subTitle"
+              style={{ color: theme.secondaryText }}
+            >
+              Published on {pub.createdAt.split("T")[0]}
+            </p>
+          </div>
+>>>>>>> Stashed changes
         </div>
         <p className="publication-description" style={{ color: theme.text }}>
           {pub.description}

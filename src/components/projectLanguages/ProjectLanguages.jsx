@@ -12,7 +12,11 @@ function ProjectLanguages({ logos }) {
               key={logo.name}
               placement={"top"}
               overlay={
+<<<<<<< Updated upstream
                 <Tooltip id={`tooltip-top`}>
+=======
+                <Tooltip id={`tooltip-${logo.name}`}>
+>>>>>>> Stashed changes
                   <strong>{logo.name}</strong>
                 </Tooltip>
               }

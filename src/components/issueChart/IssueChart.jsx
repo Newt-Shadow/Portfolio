@@ -16,6 +16,7 @@ const IssueChart = () => {
     ],
   };
 
+<<<<<<< Updated upstream
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: true,
@@ -53,6 +54,23 @@ const IssueChart = () => {
         <h2 className="issue-chart-header">Issue Distribution</h2>
       </motion.div>
       <Doughnut data={data} options={chartOptions} />
+=======
+  return (
+    <div className="issue-chart">
+      <Fade bottom duration={2000} distance="20px">
+        <h2 className="issue-chart-header">Issue Distribution</h2>
+      </Fade>
+      <Doughnut
+        data={data}
+        options={{
+          responsive: true,
+          maintainAspectRatio: true,
+          animation: {
+            duration: 4000,
+          },
+        }}
+      />
+>>>>>>> Stashed changes
     </div>
   );
 };
