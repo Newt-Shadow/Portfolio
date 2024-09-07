@@ -1,7 +1,7 @@
 import React from "react";
 import "./BlogCard.css";
 
-function BlogCard({ blog }) {
+export default function BlogCard({ blog }) {
   return (
     <div>
       <div class="container">
@@ -20,5 +20,3 @@ function BlogCard({ blog }) {
     </div>
   );
 }
-
-export default  BlogCard;

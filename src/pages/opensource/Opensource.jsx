@@ -8,7 +8,7 @@ import Issues from "../../containers/issues/Issues";
 import TopButton from "../../components/topButton/TopButton";
 import "./Opensource.css";
 
-function Opensource({ theme, onToggle }) {
+const Opensource = ({ theme, onToggle }) => {
   return (
     <div className="opensource-main">
       <Header theme={theme} />
@@ -20,6 +20,6 @@ function Opensource({ theme, onToggle }) {
       <TopButton theme={theme} />
     </div>
   );
-}
+};
 
 export default Opensource;

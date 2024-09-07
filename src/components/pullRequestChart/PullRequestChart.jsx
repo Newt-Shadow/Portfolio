@@ -1,6 +1,6 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { motion } from "framer-motion";
+import { Fade } from "react-reveal";
 import "./PullRequestChart.css";
 import PullRequestData from "../../shared/opensource/pull_requests.json";
 
@@ -22,19 +22,9 @@ const PullRequestChart = () => {
 
   return (
     <div className="pr-chart">
-<<<<<<< Updated upstream
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h2 className="pr-chart-header">Pull Request Distribution</h2>
-      </motion.div>
-=======
       <Fade bottom duration={2000} distance="20px">
         <h2 className="pr-chart-header">Pull Request Distribution</h2>
       </Fade>
->>>>>>> Stashed changes
       <Doughnut
         data={data}
         options={{

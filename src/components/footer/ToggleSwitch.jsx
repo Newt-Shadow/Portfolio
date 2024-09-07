@@ -19,11 +19,7 @@ export const MoonSvg = styled.svg`
   margin-left: 10px;
 `;
 
-<<<<<<< Updated upstream
-function ToggleSwitch({ theme, onToggle }) {
-=======
 const ToggleSwitch = ({ theme, onToggle }) => {
->>>>>>> Stashed changes
   const isOn = theme !== lightTheme;
   const back = theme.text;
   const butt = theme.body;
@@ -63,14 +59,10 @@ const ToggleSwitch = ({ theme, onToggle }) => {
         className="react-switch-label"
         htmlFor={`react-switch-new`}
       >
-<<<<<<< Updated upstream
-        <span style={{ background: butt }} className={`react-switch-button`} />
-=======
         <span
           style={{ background: butt }}
           className={`react-switch-button`}
         />
->>>>>>> Stashed changes
       </label>
       <MoonSvg
         xmlns="http://www.w3.org/2000/svg"
@@ -87,10 +79,6 @@ const ToggleSwitch = ({ theme, onToggle }) => {
       </MoonSvg>
     </ToggleDiv>
   );
-<<<<<<< Updated upstream
-}
-=======
 };
->>>>>>> Stashed changes
 
 export default ToggleSwitch;
