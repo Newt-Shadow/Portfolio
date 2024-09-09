@@ -1,111 +1,104 @@
+/* Increased specificity for cert-card */
 .cert-card {
-  width: 30%;
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid #d9dbdf;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px #d9dbdf;
-  margin-bottom: 30px;
-  flex: 0 0 30%;
+  width: 30% !important;
+  display: inline-block !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  border: 1px solid #d9dbdf !important;
+  border-radius: 5px !important;
+  box-shadow: 5px 5px 5px #d9dbdf !important;
+  margin-bottom: 30px !important;
+  flex: 0 0 30% !important;
 }
 
-.cert-header {
-  margin: 0px;
-  border-radius: 5px 5px 0px 0px;
+
+
+.cert-card .cert-header {
+  margin: 0 !important;
+  border-radius: 5px 5px 0 0 !important;
 }
 
-.logo_img {
-  margin: 3px;
-  width: auto;
-  height: 100px;
+.cert-card .logo_img {
+  margin: 3px !important;
+  width: auto !important;
+  height: 100px !important;
 }
 
-.cert-body {
-  margin: 0px;
+.cert-card .cert-body {
+  margin: 0 !important;
 }
 
-.cert-body-title {
-  font-family: "Google Sans Regular";
-  font-size: 20px;
-  margin: 10px;
+.cert-card .cert-body-title {
+  font-family: "Google Sans Regular", sans-serif !important;
+  font-size: 20px !important;
+  margin: 10px !important;
 }
 
-.cert-body-subtitle {
-  font-family: "Google Sans Regular";
-  font-size: 18px;
-  color: #808080;
-  margin: 10px;
+.cert-card .cert-body-subtitle {
+  font-family: "Google Sans Regular", sans-serif !important;
+  font-size: 18px !important;
+  color: #808080 !important;
+  margin: 10px !important;
 }
 
-.content {
-  position: relative;
-  width: 100%;
-  margin: auto;
-  overflow: hidden;
+.cert-card .content {
+  position: relative !important;
+  width: 100% !important;
+  margin: auto !important;
+  overflow: hidden !important;
 }
 
-.content .content-overlay {
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  height: 99%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0;
-  -webkit-transition: all 0.4s ease-in-out 0s;
-  -moz-transition: all 0.4s ease-in-out 0s;
-  transition: all 0.4s ease-in-out 0s;
+.cert-card .content .content-overlay {
+  background: rgba(0, 0, 0, 0.7) !important;
+  position: absolute !important;
+  height: 99% !important;
+  width: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  opacity: 0 !important;
+  transition: opacity 0.4s ease-in-out !important;
 }
 
-.content:hover .content-overlay {
-  opacity: 1;
+.cert-card .content:hover .content-overlay {
+  opacity: 1 !important;
 }
 
-.content-details {
-  position: absolute;
-  text-align: center;
-  padding-left: 1em;
-  padding-right: 1em;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  -moz-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
+.cert-card .content-details {
+  position: absolute !important;
+  text-align: center !important;
+  padding: 1em !important;
+  width: 100% !important;
+  top: 50% !important;
+  left: 50% !important;
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  transition: opacity 0.3s ease-in-out !important;
 }
 
-.content:hover .content-details {
-  top: 50%;
-  left: 50%;
-  opacity: 1;
+.cert-card .content:hover .content-details {
+  opacity: 1 !important;
 }
 
-.content-details h3 {
-  color: #fff;
-  font-weight: 500;
-  font-family: "Google Sans Regular";
-  letter-spacing: 0.15em;
-  margin-bottom: 0.5em;
-  text-transform: uppercase;
+.cert-card .content-details h3 {
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-family: "Google Sans Regular", sans-serif !important;
+  letter-spacing: 0.15em !important;
+  margin-bottom: 0.5em !important;
+  text-transform: uppercase !important;
+  padding-top: 4.2rem;
+  font-size: 1.2rem;
 }
 
-.fadeIn-top {
-  top: 20%;
-}
-
-@media (max-width: 1380px) {
+.cert-card .fadeIn-top {
+  top: 20% !important;
 }
 
 @media (max-width: 768px) {
   .cert-card {
-    width: 100%;
+    width: 100% !important;
   }
 }
